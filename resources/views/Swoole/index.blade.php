@@ -33,7 +33,10 @@
     };
 
     websocket.onmessage = function (evt) {
-        console.log('Retrieved data from server: ' + evt.data);
+        let ht= '<p style="float: left">客服 ： </p>' + JSON.parse(evt.data) +'<br/>'
+        $('.content').append(ht)
+        console.log('Retrieved data from server: ' + evt.data.data);
+        console.log('Retrieved data from server: ' + JSON.parse( evt.data ));
     };
 
     websocket.onerror = function (evt, e) {
@@ -41,7 +44,13 @@
     };
     $('.btn').click(function () {
         let content = $('.xiaoxi').val();
-        websocket.send('message','测试');
+        if(content.length > 0){
+            let ht= '<p style="float: right">我 ： </p>' + content  +'<br/>'
+            $('.content').append(ht)
+            websocket.send('{"event":"test","data":"'+ content +'"}');
+            $('.xiaoxi').val('');
+        }
+        console.log("宛城")
     })
 </script>
 </html>

@@ -14,10 +14,10 @@ use SwooleTW\Http\Websocket\Facades\Websocket;
 */
 
 
-Websocket::on('connect', function ($websocket, $request) {
-    // in connect callback, illuminate request will be injected here
-    $websocket->emit('message', '测试信息');
-});
+//Websocket::on('connect', function ($websocket, $request) {
+//    // in connect callback, illuminate request will be injected here
+//    $websocket->emit('message', '测试信息222');
+//});
 
 Websocket::on('disconnect', function ($websocket) {
     // this callback will be triggered when a websocket is disconnected
@@ -29,5 +29,5 @@ Websocket::on('example', function ($websocket, $data) {
 });
 
 // sending to all clients except sender
-Websocket::emit('message', '111111111111111111111111');
+Websocket::on('test','App\Http\Controllers\Swoole\SwooleController@test');
 

@@ -1,5 +1,6 @@
 <?php
 
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -7,7 +8,8 @@ return [
     | Replace this handler if you want to customize your websocket handler
     |--------------------------------------------------------------------------
     */
-    'handler' => SwooleTW\Http\Websocket\SocketIO\WebsocketHandler::class,
+//    'handler' => SwooleTW\Http\Websocket\SocketIO\WebsocketHandler::class,
+    'handler' => App\Swoole\Websocket::Class,
 
     /*
     |--------------------------------------------------------------------------
@@ -15,7 +17,8 @@ return [
     | Replace it if you want to customize your websocket payload
     |--------------------------------------------------------------------------
     */
-    'parser' => SwooleTW\Http\Websocket\SocketIO\SocketIOParser::class,
+//    'parser' => SwooleTW\Http\Websocket\SocketIO\SocketIOParser::class,
+    'parser' => App\Swoole\Parser::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +33,9 @@ return [
     |--------------------------------------------------------------------------
     */
     'middleware' => [
-         SwooleTW\Http\Websocket\Middleware\DecryptCookies::class,
-         SwooleTW\Http\Websocket\Middleware\StartSession::class,
-         SwooleTW\Http\Websocket\Middleware\Authenticate::class,
+//         SwooleTW\Http\Websocket\Middleware\DecryptCookies::class,
+//         SwooleTW\Http\Websocket\Middleware\StartSession::class,
+//         SwooleTW\Http\Websocket\Middleware\Authenticate::class,
     ],
 
     /*
@@ -41,7 +44,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'handshake' => [
-        'enabled' => true,
+        'enabled' => false,
         'handler' => SwooleTW\Http\Websocket\HandShakeHandler::class,
     ],
 
