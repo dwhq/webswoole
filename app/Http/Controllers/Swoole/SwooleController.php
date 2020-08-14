@@ -16,6 +16,6 @@ class SwooleController extends Controller
     }
     public function test(Websocket $websocket, $data)
     {
-        $websocket->emit('return', "我收到了你的消息" .$data);
+        $websocket->emit('return', "我收到了你的消息" .json_decode($data,true));
     }
 }

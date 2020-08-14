@@ -18,3 +18,9 @@ Route::get('/', function (Request $request) {
 
 });
 Route::get('/swoole',"Swoole\SwooleController@index");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+

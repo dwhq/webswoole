@@ -22,7 +22,8 @@ class Websocket implements HandlerContract
         /**
          * 客户端建立起长链接后，返回客户端fd
          */
-        $this->server->push($fd, json_encode(['event' => 'open', 'data' => ['fd' => $fd]]));
+//        $this->server->push($fd, json_encode(['event' => 'open', 'data' => ['fd' => $fd]]));
+
         return true;
     }
 

@@ -16,7 +16,7 @@ use SwooleTW\Http\Websocket\Facades\Websocket;
 
 //Websocket::on('connect', function ($websocket, $request) {
 //    // in connect callback, illuminate request will be injected here
-//    $websocket->emit('message', '测试信息222');
+//
 //});
 
 Websocket::on('disconnect', function ($websocket) {
@@ -29,5 +29,7 @@ Websocket::on('example', function ($websocket, $data) {
 });
 
 // sending to all clients except sender
-Websocket::on('test','App\Http\Controllers\Swoole\SwooleController@test');
+Websocket::on('test','App\Http\Controllers\Swoole\SwooleController@test')
+    ->middleware(FooBarMiddleware::class);
+
 

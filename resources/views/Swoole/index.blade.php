@@ -14,7 +14,7 @@
 <body>
 <div class="" style="width: 1200px;margin: 0 auto">
 
-    <div class="content">
+    <div class="content" style="width: 500px;">
         <h2>聊天内容</h2>
     </div>
     <textarea class="xiaoxi"></textarea><br/>
@@ -33,10 +33,9 @@
     };
 
     websocket.onmessage = function (evt) {
-        let ht= '<p style="float: left">客服 ： </p>' + JSON.parse(evt.data) +'<br/>'
+        let data = JSON.parse(evt.data);
+        let ht= '<p style="text-align: left">客服: ' + data.data +' </p><br/>'
         $('.content').append(ht)
-        console.log('Retrieved data from server: ' + evt.data.data);
-        console.log('Retrieved data from server: ' + JSON.parse( evt.data ));
     };
 
     websocket.onerror = function (evt, e) {
@@ -45,7 +44,7 @@
     $('.btn').click(function () {
         let content = $('.xiaoxi').val();
         if(content.length > 0){
-            let ht= '<p style="float: right">我 ： </p>' + content  +'<br/>'
+            let ht= '<p style="text-align: right"> ' + content  +' :我 </p><br/>'
             $('.content').append(ht)
             websocket.send('{"event":"test","data":"'+ content +'"}');
             $('.xiaoxi').val('');
